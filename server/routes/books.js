@@ -23,8 +23,8 @@ router.get('/', function(req, res){
 });
 });
 
-router.get('/:id',function(req,res){
-  var id = req.params.id;
+router.get('/:genre',function(req,res){
+  var genre = req.params.genre;
   //this id is paired with '/:id' in the parameter
   pg.connect(connectionString, function(err,client,done){
     if(err){
@@ -33,7 +33,7 @@ router.get('/:id',function(req,res){
     }
     client.query('SELECT * FROM books ' +
                 'WHERE genre = $1',
-                [id],
+                [genre],
                 function(err,result){
                   done();
 
